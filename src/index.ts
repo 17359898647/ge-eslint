@@ -7,7 +7,7 @@ import eslint_config_standard_jsx from 'eslint-config-standard-jsx'
 import unocss from '@unocss/eslint-plugin'
 
 export default function (
-  options: OptionsConfig & ConfigItem,
+  options?: OptionsConfig & ConfigItem,
   ...userConfigs: (ConfigItem | ConfigItem[])[]
 ) {
   return antfu({
