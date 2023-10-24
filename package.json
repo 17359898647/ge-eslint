@@ -1,7 +1,7 @@
 {
   "name": "ge-eslint",
   "type": "module",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "packageManager": "pnpm@8.8.0",
   "description": "vue3 Eslint配置",
   "license": "MIT",
@@ -49,7 +49,8 @@
     "@antfu/eslint-config": "1.0.0-beta.24",
     "@unocss/eslint-plugin": "^0.56.5",
     "eslint-config-standard-jsx": "^11.0.0",
-    "eslint-plugin-react": "^7.33.2"
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-sort-keys": "^2.3.5"
   },
   "devDependencies": {
     "@antfu/ni": "^0.21.8",
