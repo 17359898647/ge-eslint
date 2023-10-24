@@ -1,15 +1,10 @@
 // @ts-check
-import antfu from '@antfu/eslint-config'
+import eslint from './dist/index.cjs'
 
-export default antfu(
+export default eslint(
   {
     ignores: [
       // eslint ignore globs here
     ],
-  },
-  {
-    rules: {
-      // overrides
-    },
   },
 )
