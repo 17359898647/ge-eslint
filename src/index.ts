@@ -6,10 +6,16 @@ import eslint_config_standard_jsx from 'eslint-config-standard-jsx'
 import unocss from '@unocss/eslint-plugin'
 import sortKeys from 'eslint-plugin-sort-keys'
 
+type IsortKeys = boolean | {
+  'sort-keys/sort-keys-fix': 'error' | 'warn' | 'off' | 2 | 1 | 0
+}
 export default function (
-  options?: OptionsConfig & ConfigItem,
+  options?: OptionsConfig & ConfigItem & {
+    sortKeysOptions?: IsortKeys
+  },
   ...userConfigs: (ConfigItem | ConfigItem[])[]
 ) {
+  const { sortKeysOptions, ...otherOptions } = options ?? {}
   return antfu(
     {
       ignores: [
@@ -102,7 +108,7 @@ export default function (
       },
       stylistic: true,
       yaml: false,
-      ...options,
+      ...otherOptions,
     },
     {
       plugins: {
@@ -146,14 +152,17 @@ export default function (
       },
     },
     unocss.configs.flat,
-    {
-      plugins: {
-        'sort-keys': sortKeys,
-      },
-      rules: {
-        'sort-keys/sort-keys-fix': 'error',
-      },
-    },
+    sortKeysOptions
+      ? {
+          plugins: {
+            'sort-keys': sortKeys,
+          },
+          rules: {
+            'sort-keys/sort-keys-fix': 'error',
+            ...sortKeysOptions,
+          },
+        }
+      : {},
     ...userConfigs,
   )
 }
