@@ -86,8 +86,27 @@ export default function (
             multiline: 'below',
             singleline: 'beside',
           }],
-          'vue/html-closing-bracket-spacin': 0,
+          'vue/html-closing-bracket-spacing': [
+            2,
+            {
+              endTag: 'never',
+              selfClosingTag: 'never',
+              startTag: 'always',
+            },
+          ],
           'vue/html-indent': [2, 2],
+          'vue/html-self-closing': [
+            'error',
+            {
+              html: {
+                component: 'always',
+                normal: 'never',
+                void: 'always',
+              },
+              math: 'always',
+              svg: 'always',
+            },
+          ],
           'vue/max-attributes-per-line': [2, {
             multiline: {
               max: 1,
