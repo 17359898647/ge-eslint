@@ -1,8 +1,6 @@
 // @ts-nocheck
 import type { ConfigItem, OptionsConfig } from '@antfu/eslint-config'
 import { antfu } from '@antfu/eslint-config'
-import react from 'eslint-plugin-react'
-import eslint_config_standard_jsx from 'eslint-config-standard-jsx'
 import unocss from '@unocss/eslint-plugin'
 import sortKeys from 'eslint-plugin-sort-keys'
 
@@ -27,16 +25,52 @@ export default function (
         'src/types/auto-component.d.ts',
         'src/types/.eslintrc-auto-import.d.ts',
       ],
-      jsonc: true,
-      jsx: true,
-      overrides: {
-        javascript: {
+      javascript: {
+        overrides: {
           'no-console': 0,
         },
-        typescript: {
+      },
+      jsonc: true,
+      jsx: true,
+      react: {
+        overrides: {
+          'react/jsx-boolean-value': [2, 'always'],
+          'react/jsx-indent': [2, 2],
+          'react/jsx-max-props-per-line': [2, {
+            maximum: 1,
+            when: 'always',
+          }],
+          'react/jsx-one-expression-per-line': [2, {
+            allow: 'literal',
+          }],
+          'react/jsx-sort-props': [2, {
+            callbacksLast: true,
+            ignoreCase: false,
+            multiline: 'last',
+            noSortAlphabetically: false,
+            reservedFirst: true,
+            shorthandFirst: true,
+            shorthandLast: false,
+          }],
+          'react/jsx-wrap-multilines': [2, {
+            arrow: 'parens-new-line',
+            assignment: 'parens-new-line',
+            condition: 'parens-new-line',
+            declaration: 'parens-new-line',
+            logical: 'parens-new-line',
+            prop: 'parens-new-line',
+            return: 'parens-new-line',
+          }],
+        },
+      },
+      stylistic: true,
+      typescript: {
+        overrides: {
           'ts/ban-ts-comment': 'off',
         },
-        vue: {
+      },
+      vue: {
+        overrides: {
           '@typescript-eslint/ban-ts-comment': 'off',
           '@typescript-eslint/consistent-type-assertions': 0,
           '@typescript-eslint/no-namespace': 'off',
@@ -125,44 +159,8 @@ export default function (
           'yml/no-empty-mapping-value': 'off',
         },
       },
-      stylistic: true,
       yaml: false,
       ...otherOptions,
-    },
-    {
-      plugins: {
-        react,
-      },
-      rules: {
-        ...eslint_config_standard_jsx.rules,
-        'react/jsx-boolean-value': [2, 'always'],
-        'react/jsx-indent': [2, 2],
-        'react/jsx-max-props-per-line': [2, {
-          maximum: 1,
-          when: 'always',
-        }],
-        'react/jsx-one-expression-per-line': [2, {
-          allow: 'literal',
-        }],
-        'react/jsx-sort-props': [2, {
-          callbacksLast: true,
-          ignoreCase: false,
-          multiline: 'last',
-          noSortAlphabetically: false,
-          reservedFirst: true,
-          shorthandFirst: true,
-          shorthandLast: false,
-        }],
-        'react/jsx-wrap-multilines': [2, {
-          arrow: 'parens-new-line',
-          assignment: 'parens-new-line',
-          condition: 'parens-new-line',
-          declaration: 'parens-new-line',
-          logical: 'parens-new-line',
-          prop: 'parens-new-line',
-          return: 'parens-new-line',
-        }],
-      },
     },
     {
       rules: {
