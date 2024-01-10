@@ -11,7 +11,9 @@
     "url": "git+https://github.com/17359898647/ge-eslint.git"
   },
   "bugs": "https://github.com/17359898647/ge-eslint/issues",
-  "keywords": [],
+  "keywords": [
+    "ge-eslint"
+  ],
   "sideEffects": false,
   "exports": {
     ".": {
