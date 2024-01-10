@@ -61,6 +61,9 @@ export default function (
             prop: 'parens-new-line',
             return: 'parens-new-line',
           }],
+          'react/no-unknown-property': [2, {
+            ignore: ['class'],
+          }],
         },
       },
       stylistic: true,
